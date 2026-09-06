@@ -1,7 +1,7 @@
 #include <glad/glad.h>
 #include "Engine.h"
 
-class MainGameApp : public Engine
+class Maingame : public Engine
 {
 protected:
     void OnUpdate(float deltaTime) override
@@ -17,7 +17,7 @@ protected:
 
 int main()
 {
-    MainGameApp gameApp;
+    Maingame gameApp;
     if (!gameApp.Initialize("Window", 800, 600))
     {
         return -1;

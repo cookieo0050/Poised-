@@ -41,7 +41,7 @@ bool Engine::Initialize(const char* title, int width, int height)
 		Shutdown();
 		return false;
 	}
-	fprintf(stdout, "OpenGL %d.%d initialized, This is so tisim\n", GLVersion.major, GLVersion.minor);
+	fprintf(stdout, "OpenGL %d.%d initialized, YAY :D\n", GLVersion.major, GLVersion.minor);
 
 	m_isRunning = true;
 	m_lastFrameTime = 0.0f;
