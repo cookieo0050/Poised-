@@ -13,6 +13,7 @@ public:
 protected:
 	virtual void OnUpdate(float deltaTime) = 0;
 	virtual void OnRender() = 0;
+	virtual void OnImGui() {};
 
 private:
 	struct GLFWwindow* m_window = nullptr;

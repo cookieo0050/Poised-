@@ -19,6 +19,10 @@
     <Filter Include="Source Files\Engine Main">
       <UniqueIdentifier>{1bc58458-8a24-4941-ab13-27f827ff4090}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Dear ImGui">
+      <UniqueIdentifier>{6f9a3b1c-2b52-4c61-9e10-2b528f48c3a1}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -40,6 +44,27 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files\Engine Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_draw.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_tables.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_demo.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_widgets.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\Dear ImGui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

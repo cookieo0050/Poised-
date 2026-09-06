@@ -1,4 +1,5 @@
 #include <glad/glad.h>
+#include <imgui.h>
 #include "Engine.h"
 
 class Maingame : public Engine
@@ -12,6 +13,10 @@ protected:
     {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+    }
+    void OnImGui() override
+    {
+        ImGui::ShowDemoWindow();
     }
 };
 

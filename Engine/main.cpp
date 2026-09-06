@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "Engine.h"
 
+#include <imgui.h>
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 #include <cstdio>
 
 bool Engine::Initialize(const char* title, int width, int height)
@@ -43,6 +47,19 @@ bool Engine::Initialize(const char* title, int width, int height)
 	}
 	fprintf(stdout, "OpenGL %d.%d initialized, YAY :D\n", GLVersion.major, GLVersion.minor);
 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+	ImGui::StyleColorsDark();
+
+	if (!ImGui_ImplGlfw_InitForOpenGL(m_window, true) || !ImGui_ImplOpenGL3_Init("#version 330"))
+	{
+		fprintf(stderr, "Failed to initialize Dear ImGui, This is so tisim\n");
+		Shutdown();
+		return false;
+	}
+
 	m_isRunning = true;
 	m_lastFrameTime = 0.0f;
 	return true;
@@ -62,7 +79,16 @@ void Engine::Run()
 		m_lastFrameTime = currentTime;
 
 		OnUpdate(deltaTime);
+
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
 		OnRender();
+		OnImGui();
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		Update();
 		glfwSwapBuffers(m_window);
@@ -71,6 +97,10 @@ void Engine::Run()
 
 void Engine::Shutdown()
 {
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
+
 	if (m_window)
 	{
 		glfwDestroyWindow(m_window);
